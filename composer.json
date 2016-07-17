@@ -8,7 +8,8 @@
         "cocur/slugify": "~2.0@stable",
         "caffeinated/menus": "~2.0@stable",
         "rcrowe/twigbridge": "@stable",
-        "twig/extensions": "~1.0@stable"
+        "twig/extensions": "~1.0@stable",
+        "jenssegers/mongodb": "3.0@stable"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4@stable",
