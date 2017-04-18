@@ -50,4 +50,11 @@ class Kernel extends HttpKernel
         'guest' => \Ideaworks\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
+
+    protected function bootstrappers()
+    {
+        $this->bootstrappers[] = \Devitek\Core\Config\LoadYamlConfiguration::class;
+
+        return parent::bootstrappers();
+    }
 }

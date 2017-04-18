@@ -12,7 +12,8 @@
 */
 
 $app = new Illuminate\Foundation\Application(
-    realpath(__DIR__.'/../')
+    dirname(dirname(__DIR__) . '/../')
+    //realpath(__DIR__.'/../')
 );
 
 /*

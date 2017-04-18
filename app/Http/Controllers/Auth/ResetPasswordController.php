@@ -5,7 +5,12 @@ namespace Ideaworks\Http\Controllers\Auth;
 use Ideaworks\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
-class PasswordController extends Controller
+/**
+ * Class ResetPasswordController
+ *
+ * @package Ideaworks\Http\Controllers\Auth
+ */
+class ResetPasswordController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -17,14 +22,15 @@ class PasswordController extends Controller
     | explore this trait and override any methods you wish to tweak.
     |
     */
-
     use ResetsPasswords;
 
     /**
-     * Create a new password controller instance.
+     * Where to redirect users after resetting their password.
      *
-     * @return void
+     * @var string
      */
+    protected $redirectTo = '/home';
+
     public function __construct()
     {
         $this->middleware('guest');
