@@ -1,17 +1,24 @@
 <?php
 
-namespace Ideaworks\Exceptions;
+namespace Acme\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+/**
+ * Class Handler
+ *
+ * @package Acme\Exceptions
+ * @property array $dontReport
+ */
 class Handler extends ExceptionHandler
 {
     /**
      * A list of the exception types that should not be reported.
      *
      * @var array
+     *
      */
     protected $dontReport = [
         \Illuminate\Auth\AuthenticationException::class,
@@ -40,7 +47,7 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
+     * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
@@ -61,5 +68,27 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
         return redirect()->guest(route('login'));
+    }
+
+    /**
+     * Create a Symfony response for the given exception.
+     *
+     * @param  \Exception  $e
+     * @return mixed
+     */
+    protected function convertExceptionToResponse(Exception $e)
+    {
+        if (config('app.debug')) {
+            $whoops = new \Whoops\Run;
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+
+            return response()->make(
+                $whoops->handleException($e),
+                method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500,
+                method_exists($e, 'getHeaders') ? $e->getHeaders() : []
+            );
+        }
+
+        return parent::convertExceptionToResponse($e);
     }
 }
