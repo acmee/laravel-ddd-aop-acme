@@ -1,6 +1,6 @@
 <?php
 
-namespace Ideaworks\Providers;
+namespace Acme\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -12,7 +12,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Ideaworks\Model' => 'Ideaworks\Policies\ModelPolicy',
+        'Acme\Model' => 'Acme\Policies\ModelPolicy',
     ];
 
     /**

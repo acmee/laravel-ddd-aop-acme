@@ -1,6 +1,6 @@
 <?php
 
-namespace Ideaworks\Http\Requests;
+namespace Acme\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

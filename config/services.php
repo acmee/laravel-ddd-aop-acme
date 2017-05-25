@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => Ideaworks\User::class,
+        'model' => Acme\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

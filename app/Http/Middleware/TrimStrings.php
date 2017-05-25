@@ -1,13 +1,13 @@
 <?php
 
-namespace Ideaworks\Http\Middleware;
+namespace Acme\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\TrimStrings as BaseTrimmer;
 
 /**
  * Class TrimStrings
  *
- * @package Ideaworks\Http\Middleware
+ * @package Acme\Http\Middleware
  */
 class TrimStrings extends BaseTrimmer
 {

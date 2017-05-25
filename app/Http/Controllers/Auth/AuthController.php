@@ -1,26 +1,22 @@
 <?php
 
-namespace Ideaworks\Http\Controllers\Auth;
+namespace Acme\Http\Controllers\Auth;
 
-use Ideaworks\User;
-use Validator;
-use Ideaworks\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Acme\Http\Controllers\Controller;
+use Acme\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Support\Facades\Validator;
 
+/**
+ * Class AuthController
+ *
+ * @package Acme\Http\Controllers\Auth
+ * @author Ulf Tiburtius <ulf@idea-works.de>
+ * @since 2017/05/09
+ */
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
-
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
@@ -30,11 +26,6 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
 
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);

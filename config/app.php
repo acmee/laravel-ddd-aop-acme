@@ -151,11 +151,14 @@ return [
         /*
          * Application Service Providers...
          */
-        Ideaworks\Providers\AppServiceProvider::class,
-        Ideaworks\Providers\AuthServiceProvider::class,
-        Ideaworks\Providers\EventServiceProvider::class,
-        Ideaworks\Providers\RouteServiceProvider::class,
+        Xinax\LaravelGettext\LaravelGettextServiceProvider::class,
+        LaravelDoctrine\ORM\DoctrineServiceProvider::class,
 
+        Acme\Providers\AppServiceProvider::class,
+        //Acme\Providers\AuthServiceProvider::class,
+        //Acme\Providers\EventServiceProvider::class,
+        Acme\Providers\RouteServiceProvider::class,
+        Acme\Providers\RepositoryServiceProvider::class,
     ],
 
     /*

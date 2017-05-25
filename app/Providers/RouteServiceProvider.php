@@ -1,42 +1,43 @@
 <?php
 
-namespace Ideaworks\Providers;
+namespace Acme\Providers;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
+/**
+ * Class RouteServiceProvider
+ *
+ * @package Acme\Providers
+ * @author Ulf Tiburtius <ulf@idea-works.de>
+ * @since 2017/05/09
+ */
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * This namespace is applied to your controller routes.
-     *
-     * In addition, it is set as the URL generator's root namespace.
-     *
      * @var string
      */
-    protected $namespace = 'Ideaworks\Http\Controllers';
+    protected $namespace = 'Acme\Http\Controllers';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
      * @return void
      */
-    public function boot()
+    public function boot() : void
     {
         //
-
         parent::boot();
     }
 
     /**
-     * Define the routes for the application.
+     * @param Router $router
      *
      * @return void
      */
-    public function map()
+    public function map(Router $router) : void
     {
         $this->mapApiRoutes();
-        $this->mapWebRoutes();
+        $this->mapWebRoutes($router);
     }
 
     /**
@@ -46,11 +47,13 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapWebRoutes()
+    protected function mapWebRoutes(Router $router) : void
     {
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/web.php'));
+        $router
+            ->middlewareGroup('web', ['web'])
+            ->group(['namespace' => $this->namespace . '\Web'],function (Router $router) : void {
+                require_once base_path('routes/web.php');
+            });
     }
 
     /**
@@ -60,7 +63,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapApiRoutes()
+    protected function mapApiRoutes() : void
     {
         Route::prefix('api')
             ->middleware('api')

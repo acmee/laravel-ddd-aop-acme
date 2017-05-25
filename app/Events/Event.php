@@ -1,6 +1,6 @@
 <?php
 
-namespace Ideaworks\Events;
+namespace Acme\Events;
 
 abstract class Event
 {

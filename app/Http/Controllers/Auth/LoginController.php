@@ -1,13 +1,13 @@
 <?php
-namespace Ideaworks\Http\Controllers\Auth;
+namespace Acme\Http\Controllers\Auth;
 
-use Ideaworks\Http\Controllers\Controller;
+use Acme\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 /**
  * Class LoginController
  *
- * @package Ideaworks\Http\Controllers\Auth
+ * @package Acme\Http\Controllers\Auth
  */
 class LoginController extends Controller
 {

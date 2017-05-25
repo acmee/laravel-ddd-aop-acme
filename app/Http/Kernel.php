@@ -1,6 +1,6 @@
 <?php
 
-namespace Ideaworks\Http;
+namespace Acme\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -24,11 +24,12 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \Ideaworks\Http\Middleware\EncryptCookies::class,
+            \Acme\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \Ideaworks\Http\Middleware\VerifyCsrfToken::class,
+            \Acme\Http\Middleware\VerifyCsrfToken::class,
+            \Xinax\LaravelGettext\Middleware\GettextMiddleware::class,
         ],
 
         'api' => [
@@ -44,10 +45,10 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Ideaworks\Http\Middleware\Authenticate::class,
+        'auth' => \Acme\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
-        'guest' => \Ideaworks\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \Acme\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 

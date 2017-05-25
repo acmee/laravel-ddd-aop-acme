@@ -1,15 +1,15 @@
 <?php
-namespace Ideaworks\Http\Controllers\Auth;
+namespace Acme\Http\Controllers\Auth;
 
-use Ideaworks\User;
-use Ideaworks\Http\Controllers\Controller;
+use Acme\User;
+use Acme\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 /**
  * Class RegisterController
  *
- * @package Ideaworks\Http\Controllers\Auth
+ * @package Acme\Http\Controllers\Auth
  */
 class RegisterController extends Controller
 {

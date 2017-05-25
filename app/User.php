@@ -1,6 +1,6 @@
 <?php
 
-namespace Ideaworks;
+namespace Acme;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

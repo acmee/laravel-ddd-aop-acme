@@ -1,6 +1,6 @@
 <?php
 
-namespace Ideaworks\Providers;
+namespace Acme\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -12,8 +12,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        /*'Ideaworks\Events\SomeEvent' => [
-            'Ideaworks\Listeners\EventListener',
+        /*'Acme\Events\SomeEvent' => [
+            'Acme\Listeners\EventListener',
         ],*/
     ];
 

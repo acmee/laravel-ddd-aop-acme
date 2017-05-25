@@ -1,6 +1,6 @@
 <?php
 
-namespace Ideaworks\Console\Commands;
+namespace Acme\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

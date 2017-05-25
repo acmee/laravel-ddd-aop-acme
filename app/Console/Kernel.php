@@ -1,6 +1,6 @@
 <?php
 
-namespace Ideaworks\Console;
+namespace Acme\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -8,7 +8,7 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 /**
  * Class Kernel
  *
- * @package Ideaworks\Console
+ * @package Acme\Console
  */
 class Kernel extends ConsoleKernel
 {
