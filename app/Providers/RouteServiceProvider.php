@@ -51,7 +51,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $router
             ->middlewareGroup('web', ['web'])
-            ->group(['namespace' => $this->namespace . '\Web'],function (Router $router) : void {
+            ->group(['namespace' => $this->namespace . '\Web'], function (Router $router) : void {
                 require_once base_path('routes/web.php');
             });
     }
