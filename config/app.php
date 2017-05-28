@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Berlin',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     /*
     |--------------------------------------------------------------------------
@@ -151,11 +151,14 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Xinax\LaravelGettext\LaravelGettextServiceProvider::class,
+        LaravelDoctrine\ORM\DoctrineServiceProvider::class,
 
+        Acme\Providers\AppServiceProvider::class,
+        //Acme\Providers\AuthServiceProvider::class,
+        //Acme\Providers\EventServiceProvider::class,
+        Acme\Providers\RouteServiceProvider::class,
+        Acme\Providers\RepositoryServiceProvider::class,
     ],
 
     /*
