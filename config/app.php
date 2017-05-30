@@ -152,13 +152,13 @@ return [
          * Application Service Providers...
          */
         Xinax\LaravelGettext\LaravelGettextServiceProvider::class,
-        LaravelDoctrine\ORM\DoctrineServiceProvider::class,
 
+        Acme\Providers\AopServiceProvider::class,
         Acme\Providers\AppServiceProvider::class,
-        //Acme\Providers\AuthServiceProvider::class,
-        //Acme\Providers\EventServiceProvider::class,
+        Acme\Providers\AuthServiceProvider::class,
+        Acme\Providers\EventServiceProvider::class,
         Acme\Providers\RouteServiceProvider::class,
-        Acme\Providers\RepositoryServiceProvider::class,
+        //Acme\Providers\RepositoryServiceProvider::class,
     ],
 
     /*
