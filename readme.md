@@ -1,3 +1,3 @@
-#Acme Laravel DDD AOP 
+# Acme Laravel DDD AOP 
 
-[![Build Status](https://travis-ci.org/acmee/laravel-ddd-aop-acme.svg?branch=master)]
+![Build Status](https://travis-ci.org/acmee/laravel-ddd-aop-acme.svg?branch=master)
