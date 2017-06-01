@@ -42,6 +42,6 @@ class AppServiceProvider extends ServiceProvider
 
     protected function registerViewNamespaces() : void
     {
-        $this->app['view']->addNamespace('web', base_path() . '/resources/web/views');
+        $this->app['view']->addNamespace('web', base_path() . '/resources/views/web');
     }
 }
