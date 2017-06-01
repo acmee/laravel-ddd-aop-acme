@@ -158,7 +158,6 @@ return [
         //Acme\Providers\AuthServiceProvider::class,
         //Acme\Providers\EventServiceProvider::class,
         Acme\Providers\RouteServiceProvider::class,
-        Acme\Providers\RepositoryServiceProvider::class,
     ],
 
     /*
