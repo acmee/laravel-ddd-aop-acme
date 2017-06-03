@@ -15,4 +15,4 @@ To log into the nginx container, type ```$ make app-ssh```.
 To tail nginx container logs, type ```$ make app-logs```.
 
 ## Known issues:
-- no code coverage generation - xdebug isn't install
+- no code coverage generation - xdebug isn't installed.
