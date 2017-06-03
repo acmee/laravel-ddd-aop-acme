@@ -1,6 +1,14 @@
 env?="dev"
 
-run:
+install:
+	docker-compose up --build -d
+
+rebuild:
+	make stop
+	docker rm -f acme_mysql acme_testing acme_nginx acme_php
+	make install
+
+start:
 	docker-compose up -d
 
 stop:
@@ -14,3 +22,6 @@ app-ssh:
 
 app-logs:
 	docker logs -f acme_nginx
+
+app-php:
+	docker exec -it acme_php bash
