@@ -1,18 +1,4 @@
 # This is a simple docker dev environment.
-# Will be replaced by acme/docker project.
-#
-# Open a terminal
-# $ make run -> build/start/update containers
-# $ make stop -> stop all containers
-# $ make run-tests -> run phpunit tests
-# $ make app-ssh -> ssh connect into the nginx container
-# $ make app-logs -> tail nginx logfiles
-#
-# Navigate to http://localhost:8080
-#
-# Known issues:
-# - no code coverage generation - xdebug isn't installed
-#
 version: '2'
 
 volumes:
