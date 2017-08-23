@@ -1,5 +1,5 @@
 {
-    "name": "ideaworks/ideaworks",
+    "name": "acmee/ideaworks",
     "type": "project",
     "require": {
         "php": "~7.1",
@@ -60,6 +60,9 @@
         ]
     },
     "config": {
+        "platform": {
+            "php": "7.1"
+        },
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true,
