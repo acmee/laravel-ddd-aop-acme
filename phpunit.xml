@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
-         bootstrap="bootstrap/autoload.php"
+         bootstrap="src/bootstrap/autoload.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
@@ -10,11 +10,11 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Feature Tests">
-            <directory suffix="Test.php">./tests/Feature</directory>
+            <directory suffix="Test.php">./src/tests/Feature</directory>
         </testsuite>
 
         <testsuite name="Unit Tests">
-            <directory suffix="Test.php">./tests/Unit</directory>
+            <directory suffix="Test.php">./src/tests/Unit</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -23,8 +23,8 @@
         </whitelist>
     </filter>
     <logging>
-        <log type="coverage-clover" target="../build/tests-clover.xml"/>
-        <log type="junit" target="../build/tests-junit.xml"
+        <log type="coverage-clover" target="./build/tests-clover.xml"/>
+        <log type="junit" target="./build/tests-junit.xml"
              logIncompleteSkipped="false"/>
     </logging>
     <php>

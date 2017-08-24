@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -152,7 +152,6 @@ return [
          * Application Service Providers...
          */
         Xinax\LaravelGettext\LaravelGettextServiceProvider::class,
-        LaravelDoctrine\ORM\DoctrineServiceProvider::class,
 
         Acme\Providers\AppServiceProvider::class,
         //Acme\Providers\AuthServiceProvider::class,

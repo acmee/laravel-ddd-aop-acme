@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html/>
+<head>
+    {% include "web::layouts.partials.header" %}
+    <link href="/css/app.css" rel="stylesheet" charset="utf-8"/>
+    {% block stylesheets %} {% endblock %}
+    <script src="/js/app.js"></script>
+    {% block headJavascripts %} {% endblock %}
+</head>
+<body>
+{% block content %} {% endblock %}
+<script>$(document).foundation();</script>
+</body>
