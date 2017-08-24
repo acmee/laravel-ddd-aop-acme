@@ -2,17 +2,36 @@
 
 ![Build Status](https://travis-ci.org/acmee/laravel-ddd-aop-acme.svg?branch=master)
 
-## Build and run the project with docker
+## Run the project with docker
 
-We added a docker configuration for the sake of simplicity (will be removed in the near future and replaced by acme-ansible-docker).
+### Prerequisites
+We use [an automated nginx reverse proxy for docker containers](https://hub.docker.com/r/jwilder/nginx-proxy/) to run the app at `http://acme.dev`.
 
-To build the application type ```$ make install``` and navigate to ```http://localhost:8080```.
+* [Docker itself](https://www.docker.com)
+* dnsmasq
+    * MacOS
+        * via [brew](https://brew.sh/) 
+        ``` 
+        brew install dnsmasq
+        # find your docker IP, with docker-machine as 'docker-machine ip', or it is just 127.0.0.1
+        sudo echo 'address=/dev/YOUR_DOCKER_IP' >> /usr/local/etc/dnsmasq.conf
+        sudo mkdir -p /etc/resolver
+        echo 'nameserver 127.0.0.1' | sudo tee /etc/resolver/dev
+        sudo brew services restart dnsmasq
+        # may be restart your computer for the local dns resolver to be recognized
+        ```
 
-To start the application type ```$ make start``` and navigate to ```http://localhost:8080```.
+### How to install and run
 
-To stop the application type ```$ make stop```.
+To build the application, type ```$ make install``` and navigate to ```http://acme.dev```.
 
-To rebuild the application type ```$ make rebuild```.
+To start the application, type ```$ make start``` and navigate to ```http://acme.dev```.
+
+To stop the application, type ```$ make stop```.
+
+To rebuild the application, type ```$ make rebuild```.
+
+To remove the application and containers, type ```$ make remove```.
 
 To run the php-unit tests, type ```$ make run-tests```.
 

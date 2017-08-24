@@ -1,12 +1,14 @@
 <?php
 
+namespace acme\helpers;
+
 if (!function_exists('get_tld')) {
     /**
      * @return string
      */
     function get_tld() : string
     {
-        return \substr(\Illuminate\Support\Facades\Request::root(), strrpos(\Illuminate\Support\Facades\Request::root(), '.') + 1);
+        return \substr(\Illuminate\Support\Facades\Request::root(), \strrpos(\Illuminate\Support\Facades\Request::root(), '.') + 1);
     }
 }
 
@@ -38,6 +40,7 @@ if (!function_exists('array_multi_get')) {
                 $result[] = \array_get($item, $key);
             }
         }
+
         return \array_filter($result);
     }
 }

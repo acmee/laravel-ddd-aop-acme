@@ -1,5 +1,12 @@
+/.idea
+/.vagrant
 /vendor
+/src/vendor
 /node_modules
+/public/hot
 /public/storage
+/storage/*.key
+npm-debug.log
+yarn-error.log
 .env
 !sonar-project.properties
