@@ -22,8 +22,8 @@ remove:
 composer-install:
 	docker run -ti \
 	-v `pwd`:/app \
-	# composer $(COMPOSER_ARGS)
 	composer install --ignore-platform-reqs --no-interaction --prefer-source
+# composer $(COMPOSER_ARGS)
 
 composer-update:
 	docker run -ti \

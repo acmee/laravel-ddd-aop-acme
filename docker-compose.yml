@@ -31,7 +31,7 @@ services:
         expose:
             - 9000
         volumes:
-            - .:/var/www/acme
+            - ./src:/var/www/acme/src
         environment:
             MYSQL_ROOT_PASSWORD: fool
             MYSQL_DATABASE: project
