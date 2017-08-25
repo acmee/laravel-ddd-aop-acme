@@ -37,7 +37,7 @@ stop:
 	docker stop -t 5 acme_mysql acme_testing acme_nginx acme_nginx_proxy acme_php
 
 run-tests:
-	docker exec -it acme_testing /var/www/acme/vendor/bin/phpunit -c /var/www/acme/phpunit.xml
+	docker exec -it acme_testing /var/www/acme/src/vendor/bin/phpunit -c /var/www/acme/src/phpunit.xml
 
 app-ssh:
 	docker exec -it acme_nginx bash
