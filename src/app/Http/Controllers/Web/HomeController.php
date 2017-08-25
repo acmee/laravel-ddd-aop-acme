@@ -2,6 +2,7 @@
 
 namespace Acme\Http\Controllers\Web;
 
+use Acme\Infrastructure\Aspects\Annotations\Loggable;
 use Illuminate\Routing\Controller;
 use Illuminate\View\View;
 
@@ -15,10 +16,12 @@ use Illuminate\View\View;
 class HomeController extends Controller
 {
     /**
+     * @Loggable
+     *
      * @return \Illuminate\View\View
      */
     public function index() : View
     {
-        return view('web::pages.home.index');
+        return \view('web::pages.home.index');
     }
 }

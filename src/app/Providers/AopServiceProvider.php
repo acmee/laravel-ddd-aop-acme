@@ -35,14 +35,4 @@ class AopServiceProvider extends ServiceProvider
 
         $this->app->tag([LoggingAspect::class], $this->aopTag);
     }
-
-    /**
-     * @return array
-     */
-    public function provides() : array
-    {
-        return [
-            LoggingAspect::class
-        ];
-    }
 }

@@ -30,13 +30,14 @@ class LoggingAspect implements Aspect
     }
 
     /**
-     * Before("within(**)")
-     * param \Go\Aop\Intercept\MethodInvocation $invocation
+     * @param \Go\Aop\Intercept\MethodInvocation $invocation
      *
-     * return void
+     * @Before("@execution(Acme\Infrastructure\Aspects\Annotations\Loggable)")
      *
+     * @return void
+     */
     public function beforeMethodExecution(MethodInvocation $invocation) : void
     {
-        $this->logger->info('Executing ' . $invocation->getMethod()->name, $invocation->getArguments());
-    }*/
+        $this->logger->info('Executing ' . get_class($invocation->getThis()) . '::' . $invocation->getMethod()->getName(), $invocation->getArguments());
+    }
 }
