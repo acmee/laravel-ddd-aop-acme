@@ -26,7 +26,11 @@ services:
             - VIRTUAL_HOST=acme.dev
 
     php:
-        build: ./docker/php/
+        build:
+            context: ./docker/php
+            args:
+                APCU_VERSION: 5.1.8
+                APCU_BC_VERSION: 1.0.3
         container_name: acme_php
         expose:
             - 9000
@@ -37,6 +41,7 @@ services:
             MYSQL_DATABASE: project
             MYSQL_USER: chuck
             MYSQL_PASSWORD: norris
+            #XDEBUG_CONFIG: remote_host=172.18.0.2
 
     testing:
         build: ./docker/php/
