@@ -2,6 +2,7 @@
 
 namespace Acme\Providers;
 
+use Acme\Services\Log\LoggerServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use TwigBridge\Facade\Twig;
 use TwigBridge\ServiceProvider as TwigBridgeServiceProvider;
@@ -32,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register() : void
     {
+        $this->app->register(LoggerServiceProvider::class);
+
         if ($this->app->environment('local')) {
             $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
         }

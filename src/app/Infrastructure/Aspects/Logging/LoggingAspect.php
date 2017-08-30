@@ -38,6 +38,10 @@ class LoggingAspect implements Aspect
      */
     public function beforeMethodExecution(MethodInvocation $invocation) : void
     {
-        $this->logger->info('Executing ' . get_class($invocation->getThis()) . '::' . $invocation->getMethod()->getName(), $invocation->getArguments());
+        $this->logger->info(\sprintf(
+            'Executing %s::%s',
+            get_class($invocation->getThis()),
+            $invocation->getMethod()->getName()
+        ), $invocation->getArguments());
     }
 }
