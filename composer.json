@@ -7,7 +7,6 @@
         "belphemur/laravel-gettext": "^5.0",
         "caffeinated/menus": "^3.0",
         "cocur/slugify": "^2",
-        "devitek/yaml-configuration": "~3.1",
         "dingo/api": "1.0.*@dev",
         "gedmo/doctrine-extensions": "^2.4",
         "goaop/framework": "^2.1",
