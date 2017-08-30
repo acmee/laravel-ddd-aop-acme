@@ -154,8 +154,9 @@ return [
         Xinax\LaravelGettext\LaravelGettextServiceProvider::class,
 
         Acme\Providers\AppServiceProvider::class,
-        //Acme\Providers\AuthServiceProvider::class,
-        //Acme\Providers\EventServiceProvider::class,
+        Acme\Providers\AopServiceProvider::class,
+        Acme\Providers\AuthServiceProvider::class,
+        Acme\Providers\EventServiceProvider::class,
         Acme\Providers\RouteServiceProvider::class,
     ],
 
