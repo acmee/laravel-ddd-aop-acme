@@ -17,6 +17,7 @@
         "laravel-doctrine/extensions": "1.0.*",
         "laravel/framework": "^5.4",
         "laravel/tinker": "~1.0",
+        "ramsey/uuid-doctrine": "~1.4",
         "rcrowe/twigbridge": "@stable",
         "twig/extensions": "^1"
     },
