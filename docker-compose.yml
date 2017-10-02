@@ -48,19 +48,18 @@ services:
 
     mysql:
         image: mysql:latest
-        container_name: ${MYSQL_HOST}
+        container_name: acme_mysql
         restart: "always"
         ports:
           - 8989:3306
         volumes:
             - database_data:/var/lib/mysql
-        env_file:
-            - "./src/.env"
+        # @todo use env_file
         environment:
-            - MYSQL_DATABASE=${MYSQL_DATABASE}
-            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-            - MYSQL_USER=${MYSQL_USER}
-            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+          - MYSQL_USER=chuck
+          - MYSQL_DATABASE=project
+          - MYSQL_PASSWORD=norris
+          - MYSQL_ROOT_PASSWORD=secret
 
     composer:
         container_name: acme_php_composer

@@ -4,9 +4,11 @@ RUN rm /etc/localtime \
     && ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
     && "date"
 
-RUN docker-php-ext-install pdo_mysql \
+RUN apt-get update && apt-get install -y libmcrypt-dev \
+    && docker-php-ext-install pdo_mysql \
     json \
     opcache \
+    mcrypt \
     && rm -f /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
 
 RUN pecl install xdebug \
