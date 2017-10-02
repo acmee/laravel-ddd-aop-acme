@@ -47,3 +47,6 @@ app-logs:
 
 app-php:
 	docker exec -it acme_php bash
+
+migrate:
+	docker-compose exec php php ../acme/src/artisan doctrine:migrations:migrate
