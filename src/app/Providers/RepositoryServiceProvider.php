@@ -33,18 +33,18 @@ class RepositoryServiceProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function register() : void
+    public function register(): void
     {
         $this->registerOrm(true);
 
-        $this->app->bind(ProjectRepository::class, function ($app) : Repository {
+        $this->app->bind(ProjectRepository::class, function ($app): Repository {
             return new \Acme\Infrastructure\Repository\ProjectRepository(
                 $app['em'],
                 $app['em']->getClassMetaData(Entity\Project::class)
             );
         });
 
-        $this->app->bind(ClientRepository::class, function ($app) : Repository {
+        $this->app->bind(ClientRepository::class, function ($app): Repository {
             return new \Acme\Infrastructure\Repository\ClientRepository(
                 $app['em'],
                 $app['em']->getClassMetaData(Entity\Client::class)
@@ -57,7 +57,7 @@ class RepositoryServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerOrm($useFacades = false) : void
+    protected function registerOrm($useFacades = false): void
     {
         $this->app->register(DoctrineServiceProvider::class);
 
@@ -71,7 +71,7 @@ class RepositoryServiceProvider extends ServiceProvider
     /**
      * @return array
      */
-    public function provides() : array
+    public function provides(): array
     {
         return [
             ProjectRepository::class,

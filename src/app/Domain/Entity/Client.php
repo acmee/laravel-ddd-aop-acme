@@ -12,7 +12,7 @@ namespace Acme\Domain\Entity;
 class Client
 {
     /**
-     * @var int
+     * @var string
      */
     protected $id;
 
@@ -22,9 +22,9 @@ class Client
     protected $name;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }

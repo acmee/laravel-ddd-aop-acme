@@ -36,7 +36,7 @@ class LoggerContainer implements Log, LoggerInterface
      *
      * @return void
      */
-    public function log($level, $message, array $context = []) : void
+    public function log($level, $message, array $context = []): void
     {
         foreach ($this->loggers as $logger) {
             $logger->log($level, $this->formatMessage($message), $context);
@@ -49,7 +49,7 @@ class LoggerContainer implements Log, LoggerInterface
      *
      * @return void
      */
-    public function useFiles($path, $level = 'debug') : void
+    public function useFiles($path, $level = 'debug'): void
     {
         foreach ($this->loggers as $logger) {
             $logger->useFiles($path, $level);
@@ -63,7 +63,7 @@ class LoggerContainer implements Log, LoggerInterface
      *
      * @return void
      */
-    public function useDailyFiles($path, $days = 0, $level = 'debug') : void
+    public function useDailyFiles($path, $days = 0, $level = 'debug'): void
     {
         foreach ($this->loggers as $logger) {
             $logger->useDailyFiles($path, $days, $level);

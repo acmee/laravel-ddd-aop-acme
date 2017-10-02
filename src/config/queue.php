@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('QUEUE_DRIVER', 'beanstalkd'),
+    'default' => \env('QUEUE_DRIVER', 'beanstalkd'),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     */
 
     'failed' => [
-        'database' => env('DB_CONNECTION', 'mysql'),
+        'database' => \env('DB_CONNECTION', 'mysql'),
         'table' => 'failed_jobs',
     ],
 

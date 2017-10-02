@@ -5,12 +5,20 @@ namespace Database\Migrations;
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema as Schema;
 
+/**
+ * Class Version20171001133410
+ *
+ * @package Database\Migrations
+ */
 class Version20171001133410 extends AbstractMigration
 {
     /**
      * @param Schema $schema
+     *
+     * @return void
+     * @throws \Doctrine\DBAL\Migrations\AbortMigrationException
      */
-    public function up(Schema $schema)
+    public function up(Schema $schema): void
     {
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
@@ -20,8 +28,11 @@ class Version20171001133410 extends AbstractMigration
 
     /**
      * @param Schema $schema
+     *
+     * @return void
+     * @throws \Doctrine\DBAL\Migrations\AbortMigrationException
      */
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 

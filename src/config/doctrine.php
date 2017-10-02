@@ -22,20 +22,20 @@ return [
     */
     'managers' => [
         'default' => [
-            'dev'           => env('APP_DEBUG', false),
-            'meta'          => env('DOCTRINE_METADATA', 'annotations'),
-            'connection'    => env('DB_CONNECTION', 'mysql'),
+            'dev'           => \env('APP_DEBUG', false),
+            'meta'          => \env('DOCTRINE_METADATA', 'annotations'),
+            'connection'    => \env('DB_CONNECTION', 'mysql'),
             'namespaces'    => [
                 'App\Domain'
             ],
             'paths'         => [
-                app_path('Domain/mappings')
+                \app_path('Domain/mappings')
             ],
             'repository'    => Doctrine\ORM\EntityRepository::class,
             'proxies'       => [
                 'namespace'     => false,
-                'path'          => storage_path('proxies'),
-                'auto_generate' => env('DOCTRINE_PROXY_AUTOGENERATE', false)
+                'path'          => \storage_path('proxies'),
+                'auto_generate' => \env('DOCTRINE_PROXY_AUTOGENERATE', false)
             ],
             /*
             |--------------------------------------------------------------------------
@@ -144,7 +144,7 @@ return [
     | - LaravelDoctrine\ORM\Loggers\FileLogger
     |--------------------------------------------------------------------------
     */
-    'logger' => env('DOCTRINE_LOGGER', false),
+    'logger' => \env('DOCTRINE_LOGGER', false),
     /*
     |--------------------------------------------------------------------------
     | Cache
@@ -158,18 +158,18 @@ return [
     */
     'cache' => [
         'second_level'     => false,
-        'default'          => env('DOCTRINE_CACHE', 'array'),
+        'default'          => \env('DOCTRINE_CACHE', 'array'),
         'namespace'        => null,
         'metadata'         => [
-            'driver'       => env('DOCTRINE_METADATA_CACHE', env('DOCTRINE_CACHE', 'array')),
+            'driver'       => \env('DOCTRINE_METADATA_CACHE', \env('DOCTRINE_CACHE', 'array')),
             'namespace'    => null,
         ],
         'query'            => [
-            'driver'       => env('DOCTRINE_QUERY_CACHE', env('DOCTRINE_CACHE', 'array')),
+            'driver'       => \env('DOCTRINE_QUERY_CACHE', \env('DOCTRINE_CACHE', 'array')),
             'namespace'    => null,
         ],
         'result'           => [
-            'driver'       => env('DOCTRINE_RESULT_CACHE', env('DOCTRINE_CACHE', 'array')),
+            'driver'       => \env('DOCTRINE_RESULT_CACHE', \env('DOCTRINE_CACHE', 'array')),
             'namespace'    => null,
         ],
     ],

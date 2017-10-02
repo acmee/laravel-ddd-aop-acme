@@ -43,7 +43,7 @@ class LevelLogger implements Log, LoggerInterface
      *
      * @return void
      */
-    public function log($level, $message, array $context = []) : void
+    public function log($level, $message, array $context = []): void
     {
         if ($this->shouldLog($level)) {
             $this->logger->log($level, $this->formatMessage($message), $context);
@@ -55,7 +55,7 @@ class LevelLogger implements Log, LoggerInterface
      *
      * @return bool
      */
-    protected function shouldLog(string $level) : bool
+    protected function shouldLog(string $level): bool
     {
         if ($this->levels === ['*'] || $this->levels === ['all']) {
             return true;
@@ -70,7 +70,7 @@ class LevelLogger implements Log, LoggerInterface
      *
      * @return void
      */
-    public function useFiles($path, $level = 'debug') : void
+    public function useFiles($path, $level = 'debug'): void
     {
         if ($this->logger instanceof Log) {
             $this->logger->useFiles($path, $level);
@@ -84,7 +84,7 @@ class LevelLogger implements Log, LoggerInterface
      *
      * @return void
      */
-    public function useDailyFiles($path, $days = 0, $level = 'debug') : void
+    public function useDailyFiles($path, $days = 0, $level = 'debug'): void
     {
         if ($this->logger instanceof Log) {
             $this->logger->useDailyFiles($path, $days, $level);

@@ -21,7 +21,7 @@ class LoggerServiceProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function boot() : void
+    public function boot(): void
     {
         $source = \config_path('logger.php');
         $this->mergeConfigFrom($source, static::ABSTRACT_LOGGER);
@@ -30,7 +30,7 @@ class LoggerServiceProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function register() : void
+    public function register(): void
     {
         $this->app->singleton(static::ABSTRACT_LOGGER, function (Container $app) {
             $loggers = [];

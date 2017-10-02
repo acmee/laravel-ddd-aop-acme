@@ -12,7 +12,7 @@ namespace Acme\Domain\Entity;
 class Project
 {
     /**
-     * @var int
+     * @var string
      */
     protected $id;
 
@@ -22,9 +22,9 @@ class Project
     protected $name;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
