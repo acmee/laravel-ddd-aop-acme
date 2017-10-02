@@ -2,6 +2,8 @@
 
 namespace Acme\Domain\Contract;
 
+use Illuminate\Support\Collection;
+
 /**
  * Interface Repository
  *
@@ -11,15 +13,5 @@ namespace Acme\Domain\Contract;
  */
 interface Repository
 {
-    /**
-     * @param mixed $id
-     *
-     * @return mixed
-     */
-    public function find($id) : mixed;
-
-    /**
-     * @return mixed
-     */
-    public function findAll() : mixed;
+    public function findAll(): Collection;
 }

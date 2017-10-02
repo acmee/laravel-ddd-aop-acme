@@ -2,11 +2,11 @@
 
 namespace Acme\Providers;
 
+use Acme\Domain\Contract\ProjectRepository;
 use Acme\Domain\Contract\Repository;
 use Acme\Domain\Entity;
-use Acme\Infrastructure\Repository\Doctrine\ProjectRepository;
-use Doctrine\ORM\EntityManager;
-use Illuminate\Support\Collection;
+use Acme\Domain\Contract\ClientRepository;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use LaravelDoctrine\ORM\DoctrineServiceProvider;
 use LaravelDoctrine\ORM\Facades as DoctrineFacade;
@@ -21,32 +21,47 @@ use LaravelDoctrine\ORM\Facades as DoctrineFacade;
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
-     * @var bool
+     * @param \Illuminate\Contracts\Foundation\Application $app
      */
-    protected $defer = true;
+    public function __construct(Application $app)
+    {
+        $this->defer = true;
+
+        parent::__construct($app);
+    }
 
     /**
      * @return void
      */
     public function register() : void
     {
-        $this->registerOrm();
+        $this->registerOrm(true);
 
-        $this->app->bind(ProjectRepository::class, function () : Repository {
-            return new ProjectRepository(EntityManager::getRepository(Entity\Project::class), new Collection());
+        $this->app->bind(ProjectRepository::class, function ($app) : Repository {
+            return new \Acme\Infrastructure\Repository\ProjectRepository(
+                $app['em'],
+                $app['em']->getClassMetaData(Entity\Project::class)
+            );
+        });
+
+        $this->app->bind(ClientRepository::class, function ($app) : Repository {
+            return new \Acme\Infrastructure\Repository\ClientRepository(
+                $app['em'],
+                $app['em']->getClassMetaData(Entity\Client::class)
+            );
         });
     }
 
     /**
-     * @param bool $useFacade
+     * @param bool $useFacades
      *
      * @return void
      */
-    protected function registerOrm($useFacade = false) : void
+    protected function registerOrm($useFacades = false) : void
     {
         $this->app->register(DoctrineServiceProvider::class);
 
-        if ($useFacade) {
+        if (true === $useFacades) {
             $this->app->alias('EntityManager', DoctrineFacade\EntityManager::class);
             $this->app->alias('Registry', DoctrineFacade\Registry::class);
             $this->app->alias('Doctrine', DoctrineFacade\Doctrine::class);
@@ -59,7 +74,8 @@ class RepositoryServiceProvider extends ServiceProvider
     public function provides() : array
     {
         return [
-            ProjectRepository::class
+            ProjectRepository::class,
+            ClientRepository::class
         ];
     }
 }

@@ -41,6 +41,8 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->register(TwigBridgeServiceProvider::class);
         $this->app->alias('Twig', Twig::class);
+
+        $this->app->registerDeferredProvider(RepositoryServiceProvider::class);
     }
 
     protected function registerViewNamespaces() : void
