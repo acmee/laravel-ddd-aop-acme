@@ -48,7 +48,7 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('MYSQL_HOST', 'localhost'),
+            'host' => env('MYSQL_HOST', 'acme_mysql'),
             'port' => env('MYSQL_PORT', '3306'),
             'database' => env('MYSQL_DATABASE', 'forge'),
             'username' => env('MYSQL_USER', 'forge'),
@@ -57,7 +57,7 @@ return [
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
             'strict' => true,
-            'engine' => null,
+            'engine' => 'InnoDB',
         ],
 
     ],

@@ -22,14 +22,14 @@ return [
     */
     'managers' => [
         'default' => [
-            'dev'           => env('APP_DEBUG'),
+            'dev'           => env('APP_DEBUG', false),
             'meta'          => env('DOCTRINE_METADATA', 'annotations'),
             'connection'    => env('DB_CONNECTION', 'mysql'),
             'namespaces'    => [
-                'Ideaworks'
+                'App\Domain'
             ],
             'paths'         => [
-                base_path('app')
+                app_path('Domain/mappings')
             ],
             'repository'    => Doctrine\ORM\EntityRepository::class,
             'proxies'       => [
@@ -46,11 +46,11 @@ return [
             | e.g. Doctrine\ORM\Events::onFlush
             |
             */
-            'events'        => [
+            'events' => [
                 'listeners'   => [],
                 'subscribers' => []
             ],
-            'filters'       => [],
+            'filters' => [],
             /*
             |--------------------------------------------------------------------------
             | Doctrine mapping types
@@ -109,27 +109,29 @@ return [
     | Create a custom or override a Doctrine Type
     |--------------------------------------------------------------------------
     */
-    'custom_types'               => [
-        'json' => LaravelDoctrine\ORM\Types\Json::class
+    'custom_types' => [
+        'json' => LaravelDoctrine\ORM\Types\Json::class,
+        'uuid' => Ramsey\Uuid\Doctrine\UuidType::class,
+        'uuid_binary' => Ramsey\Uuid\Doctrine\UuidBinaryType::class,
     ],
     /*
     |--------------------------------------------------------------------------
     | DQL custom datetime functions
     |--------------------------------------------------------------------------
     */
-    'custom_datetime_functions'  => [],
+    'custom_datetime_functions' => [],
     /*
     |--------------------------------------------------------------------------
     | DQL custom numeric functions
     |--------------------------------------------------------------------------
     */
-    'custom_numeric_functions'   => [],
+    'custom_numeric_functions' => [],
     /*
     |--------------------------------------------------------------------------
     | DQL custom string functions
     |--------------------------------------------------------------------------
     */
-    'custom_string_functions'    => [],
+    'custom_string_functions' => [],
     /*
     |--------------------------------------------------------------------------
     | Enable query logging with laravel file logging,
@@ -142,7 +144,7 @@ return [
     | - LaravelDoctrine\ORM\Loggers\FileLogger
     |--------------------------------------------------------------------------
     */
-    'logger'                     => env('DOCTRINE_LOGGER', false),
+    'logger' => env('DOCTRINE_LOGGER', false),
     /*
     |--------------------------------------------------------------------------
     | Cache
@@ -181,7 +183,7 @@ return [
     | laravel-doctrine/extensions in your composer.json
     |
     */
-    'gedmo'                      => [
+    'gedmo' => [
         'all_mappings' => false
     ],
     /*
@@ -202,7 +204,7 @@ return [
      |  Doctrine notifications channel
      |
      */
-    'notifications'              => [
+    'notifications' => [
         'channel' => 'database'
     ]
 ];

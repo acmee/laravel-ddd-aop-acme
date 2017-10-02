@@ -152,6 +152,7 @@ return [
          * Application Service Providers...
          */
         Xinax\LaravelGettext\LaravelGettextServiceProvider::class,
+        LaravelDoctrine\Migrations\MigrationsServiceProvider::class,
 
         Acme\Providers\AppServiceProvider::class,
         Acme\Providers\AopServiceProvider::class,
