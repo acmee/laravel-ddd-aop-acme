@@ -3,13 +3,13 @@
 namespace Acme\Domain\Entity;
 
 /**
- * Class Project
+ * Class Client
  *
  * @package Acme\Domain\Entity
  * @author Ulf Tiburtius <ulf@idea-works.de>
- * @since 2017/05/07
+ * @since 2017/09/28
  */
-class Project
+class Client
 {
     /**
      * @var int

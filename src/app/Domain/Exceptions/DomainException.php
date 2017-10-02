@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Domain\Exception;
+namespace Acme\Domain\Exceptions;
 
 /**
  * Class DomainException
