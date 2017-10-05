@@ -7,8 +7,8 @@ volumes:
 
 services:
     nginx-proxy:
-        container_name: acme_nginx_proxy
         image: jwilder/nginx-proxy
+        container_name: acme_nginx_proxy
         ports:
             - 80:80
         volumes:
@@ -34,6 +34,7 @@ services:
             args:
                 APCU_VERSION: 5.1.8
                 APCU_BC_VERSION: 1.0.3
+        image: acme:php
         container_name: acme_php
         expose:
             - 9000
@@ -41,8 +42,9 @@ services:
             - ./src:/var/www/acme/src
 
     testing:
-        build: ./docker/php/
+        image: acme:testing
         container_name: acme_testing
+        build: ./docker/php/
         volumes:
             - php:/var/www/acme/src
 
@@ -60,12 +62,3 @@ services:
           - MYSQL_DATABASE=project
           - MYSQL_PASSWORD=norris
           - MYSQL_ROOT_PASSWORD=secret
-
-    composer:
-        container_name: acme_php_composer
-        restart: "no"
-        image: composer:latest
-        volumes:
-            - .:/app
-        depends_on:
-          - php
