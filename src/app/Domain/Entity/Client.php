@@ -2,6 +2,9 @@
 
 namespace Acme\Domain\Entity;
 
+use Acme\Domain\Entity\Concerns;
+use Ramsey\Uuid\UuidInterface;
+
 /**
  * Class Client
  *
@@ -11,8 +14,10 @@ namespace Acme\Domain\Entity;
  */
 class Client
 {
+    use Concerns\Timestamps;
+
     /**
-     * @var string
+     * @var \Ramsey\Uuid\UuidInterface
      */
     protected $id;
 
@@ -22,9 +27,9 @@ class Client
     protected $name;
 
     /**
-     * @return string
+     * @return \Ramsey\Uuid\UuidInterface
      */
-    public function getId(): string
+    public function getId(): UuidInterface
     {
         return $this->id;
     }

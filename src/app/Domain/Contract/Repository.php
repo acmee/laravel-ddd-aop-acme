@@ -2,8 +2,6 @@
 
 namespace Acme\Domain\Contract;
 
-use Illuminate\Support\Collection;
-
 /**
  * Interface Repository
  *
@@ -13,5 +11,8 @@ use Illuminate\Support\Collection;
  */
 interface Repository
 {
-    public function findAll(): Collection;
+    /**
+     * @return mixed
+     */
+    public function findAll();
 }

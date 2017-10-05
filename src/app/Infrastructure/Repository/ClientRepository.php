@@ -2,9 +2,9 @@
 
 namespace Acme\Infrastructure\Repository;
 
-use Acme\Domain\Contract\ClientRepository as RepositoryContract;
+use Acme\Domain\Contract\ClientRepository as Repository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
-use Illuminate\Support\Collection;
 
 /**
  * Class ClientRepository
@@ -13,25 +13,25 @@ use Illuminate\Support\Collection;
  * @author Ulf Tiburtius <ulf@idea-works.de>
  * @since 2017/09/27
  */
-class ClientRepository extends EntityRepository implements RepositoryContract
+class ClientRepository extends EntityRepository implements Repository
 {
     /**
      * @param string $name
      *
-     * @return \Acme\Domain\Entity\Client[]|\Illuminate\Support\Collection
+     * @return \Acme\Domain\Entity\Client[]|\Doctrine\Common\Collections\ArrayCollection
      */
-    public function findByName(string $name): Collection
+    public function findByName(string $name): ArrayCollection
     {
-        return new Collection($this->findBy(['name' => $name]));
+        return new ArrayCollection($this->findBy(['name' => $name]));
     }
 
     /**
-     * @return \Acme\Domain\Entity\Client[]|\Illuminate\Support\Collection
+     * @return \Acme\Domain\Entity\Client[]|\Doctrine\Common\Collections\ArrayCollection
      */
-    public function findAll(): Collection
+    public function findAll(): ArrayCollection
     {
         $items = parent::findAll();
 
-        return new Collection($items);
+        return new ArrayCollection($items);
     }
 }

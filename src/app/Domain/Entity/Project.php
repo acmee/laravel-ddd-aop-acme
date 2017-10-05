@@ -2,6 +2,9 @@
 
 namespace Acme\Domain\Entity;
 
+use Acme\Domain\Entity\Concerns;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Class Project
  *
@@ -11,6 +14,8 @@ namespace Acme\Domain\Entity;
  */
 class Project
 {
+    use Concerns\Timestamps;
+
     /**
      * @var string
      */
@@ -19,7 +24,27 @@ class Project
     /**
      * @var string
      */
+    protected $clientId;
+
+    /**
+     * @var string
+     */
     protected $name;
+
+    /**
+     * @var string
+     */
+    protected $description;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    protected $projectOwners;
+
+    public function __construct()
+    {
+        $this->projectOwners = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -27,6 +52,24 @@ class Project
     public function getId(): string
     {
         return $this->id;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getClientId(): ?string
+    {
+        return $this->clientId;
+    }
+
+    /**
+     * @param string $clientId
+     *
+     * @return void
+     */
+    public function setClientId(string $clientId): void
+    {
+        $this->clientId = $clientId;
     }
 
     /**
@@ -45,5 +88,53 @@ class Project
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     *
+     * @return void
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @param \Acme\Domain\Entity\ProjectOwner $projectOwner
+     *
+     * @return void
+     */
+    public function addProjectOwner(ProjectOwner $projectOwner): void
+    {
+        if ($this->projectOwners->contains($projectOwner)) {
+            return;
+        }
+
+        $this->projectOwners->add($projectOwner);
+        $projectOwner->addProject($this);
+    }
+
+    /**
+     * @param \Acme\Domain\Entity\ProjectOwner $projectOwner
+     *
+     * @return void
+     */
+    public function removeProjectOwner(ProjectOwner $projectOwner): void
+    {
+        if (!$this->projectOwners->contains($projectOwner)) {
+            return;
+        }
+
+        $this->projectOwners->removeElement($projectOwner);
+        $projectOwner->removeProject($this);
     }
 }

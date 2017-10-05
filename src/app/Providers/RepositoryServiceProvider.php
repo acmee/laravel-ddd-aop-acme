@@ -2,10 +2,9 @@
 
 namespace Acme\Providers;
 
-use Acme\Domain\Contract\ProjectRepository;
-use Acme\Domain\Contract\Repository;
+use Acme\Domain\Contract as DomainContract;
 use Acme\Domain\Entity;
-use Acme\Domain\Contract\ClientRepository;
+use Acme\Infrastructure\Repository as InfrastructureRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use LaravelDoctrine\ORM\DoctrineServiceProvider;
@@ -37,17 +36,24 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->registerOrm(true);
 
-        $this->app->bind(ProjectRepository::class, function ($app): Repository {
-            return new \Acme\Infrastructure\Repository\ProjectRepository(
+        $this->app->bind(DomainContract\ProjectRepository::class, function ($app): DomainContract\Repository {
+            return new InfrastructureRepository\ProjectRepository(
                 $app['em'],
                 $app['em']->getClassMetaData(Entity\Project::class)
             );
         });
 
-        $this->app->bind(ClientRepository::class, function ($app): Repository {
-            return new \Acme\Infrastructure\Repository\ClientRepository(
+        $this->app->bind(DomainContract\ClientRepository::class, function ($app): DomainContract\Repository {
+            return new InfrastructureRepository\ClientRepository(
                 $app['em'],
                 $app['em']->getClassMetaData(Entity\Client::class)
+            );
+        });
+
+        $this->app->bind(DomainContract\ProjectOwnerRepository::class, function ($app): DomainContract\Repository {
+            return new InfrastructureRepository\ProjectOwnerRepository(
+                $app['em'],
+                $app['em']->getClassMetaData(Entity\ProjectOwner::class)
             );
         });
     }
@@ -74,8 +80,8 @@ class RepositoryServiceProvider extends ServiceProvider
     public function provides(): array
     {
         return [
-            ProjectRepository::class,
-            ClientRepository::class
+            DomainContract\ProjectRepository::class,
+            DomainContract\ClientRepository::class
         ];
     }
 }

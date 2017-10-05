@@ -2,7 +2,6 @@
 
 namespace Acme\Domain\Contract;
 
-use Illuminate\Support\Collection;
 
 /**
  * Interface ProjectRepository
@@ -16,7 +15,7 @@ interface ProjectRepository extends Repository
     /**
      * @param string $name
      *
-     * @return \Acme\Domain\Entity\Project[]|\Illuminate\Support\Collection
+     * @return mixed
      */
-    public function findByName(string $name): Collection;
+    public function findByName(string $name);
 }

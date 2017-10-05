@@ -2,8 +2,6 @@
 
 namespace Acme\Domain\Contract;
 
-use Illuminate\Support\Collection;
-
 /**
  * Interface ClientRepository
  *
@@ -16,7 +14,7 @@ interface ClientRepository extends Repository
     /**
      * @param string $name
      *
-     * @return \Acme\Domain\Entity\Client[]|\Illuminate\Support\Collection
+     * @return mixed
      */
-    public function findByName(string $name): Collection;
+    public function findByName(string $name);
 }
