@@ -2,6 +2,8 @@
 
 namespace Acme\Http\Controllers\Web;
 
+use Acme\Domain\Contract\ClientRepository;
+use Acme\Domain\Contract\ProjectRepository;
 use Acme\Infrastructure\Aspects\Annotations\Loggable;
 use Illuminate\Routing\Controller;
 use Illuminate\View\View;
@@ -15,6 +17,16 @@ use Illuminate\View\View;
  */
 class HomeController extends Controller
 {
+    private $projectRepository;
+
+    /**
+     * @param \Acme\Domain\Contract\ProjectRepository $projectRepository
+     */
+    public function __construct(ClientRepository $projectRepository)
+    {
+        $this->projectRepository = $projectRepository;
+    }
+
     /**
      * @Loggable
      *
@@ -22,6 +34,8 @@ class HomeController extends Controller
      */
     public function index() : View
     {
+        $this->projectRepository->findAll();
+
         return \view('web::pages.home.index');
     }
 }

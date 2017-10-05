@@ -1,43 +1,32 @@
 env?="dev"
 
-install:
+ifeq (composer,$(firstword $(MAKECMDGOALS)))
+COMPOSER_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+$(eval $(COMPOSER_ARGS):;@:)
+endif
+
+ifeq (artisan,$(firstword $(MAKECMDGOALS)))
+ARTISAN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+$(eval $(ARTISAN_ARGS):;@:)
+endif
+
+build:
 	docker-compose up --build -d
-	make composer-install
+	make -- composer install --ignore-platform-reqs --no-interaction --prefer-source
 
 rebuild:
 	make remove
-	make install
-	make composer-install
+	make build
 
 remove:
 	make stop
-	docker rm -f acme_mysql acme_testing acme_nginx acme_nginx_proxy acme_php acme_php_composer
-
-#ifeq (composer,$(firstword $(MAKECMDGOALS)))
-#	# use the rest as arguments for "composer"
-#	COMPOSER_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-#	# ...and turn them into do-nothing targets
-#	$(eval $(COMPOSER_ARGS):;@:)
-#endif
-composer-install:
-	docker run -ti \
-	-v `pwd`:/app \
-	composer install --ignore-platform-reqs --no-interaction --prefer-source
-# composer $(COMPOSER_ARGS)
-
-composer-update:
-	docker run -ti \
-	-v `pwd`:/app \
-	composer update --ignore-platform-reqs --no-interaction --prefer-source
+	docker ps -a --filter="name=acme" --format="{{.ID}}" | xargs docker rm -v
 
 start:
 	docker-compose up -d
 
 stop:
-	docker stop -t 5 acme_mysql acme_testing acme_nginx acme_nginx_proxy acme_php
-
-run-tests:
-	docker exec -it acme_testing /var/www/acme/src/vendor/bin/phpunit -c /var/www/acme/src/phpunit.xml
+	docker ps -a -q  --filter="name=acme" | xargs docker stop
 
 app-ssh:
 	docker exec -it acme_nginx bash
@@ -47,3 +36,18 @@ app-logs:
 
 app-php:
 	docker exec -it acme_php bash
+
+app-mysql:
+	docker exec -it acme_mysql /bin/bash
+
+tests:
+	docker exec -it acme_testing /var/www/acme/src/vendor/bin/phpunit -c /var/www/acme/src/phpunit.xml
+
+composer:
+	docker run --rm -ti -v `pwd`:/app composer:latest composer $(COMPOSER_ARGS)
+
+artisan:
+	docker-compose exec php php ../acme/src/artisan $(ARTISAN_ARGS)
+
+migrate:
+	docker-compose exec php php ../acme/src/artisan doctrine:migrations:migrate

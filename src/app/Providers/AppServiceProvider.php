@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot() : void
+    public function boot(): void
     {
         $this->registerViewNamespaces();
     }
@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register() : void
+    public function register(): void
     {
         $this->app->register(LoggerServiceProvider::class);
 
@@ -41,10 +41,12 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->register(TwigBridgeServiceProvider::class);
         $this->app->alias('Twig', Twig::class);
+
+        $this->app->registerDeferredProvider(RepositoryServiceProvider::class);
     }
 
-    protected function registerViewNamespaces() : void
+    protected function registerViewNamespaces(): void
     {
-        $this->app['view']->addNamespace('web', base_path() . '/resources/views/web');
+        $this->app['view']->addNamespace('web', \base_path() . '/resources/views/web');
     }
 }

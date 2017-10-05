@@ -25,7 +25,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot() : void
     {
-        //
         parent::boot();
     }
 
@@ -34,9 +33,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function map(Router $router) : void
+    public function map(Router $router): void
     {
-        $this->mapApiRoutes();
+        //$this->mapApiRoutes();
         $this->mapWebRoutes($router);
     }
 
@@ -47,12 +46,15 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapWebRoutes(Router $router) : void
+    protected function mapWebRoutes(Router $router): void
     {
         $router
-            ->middlewareGroup('web', ['web'])
-            ->group(['namespace' => $this->namespace . '\Web'], function (Router $router) : void {
-                require_once base_path('routes/web.php');
+            ->group([
+                'namespace' => $this->namespace . '\Web',
+                'middleware' => ['web']
+            ],
+            function (Router $router): void {
+                require_once \base_path('routes/web.php');
             });
     }
 
@@ -63,11 +65,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapApiRoutes() : void
+    protected function mapApiRoutes(): void
     {
         Route::prefix('api')
             ->middleware('api')
             ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
+            ->group(\base_path('routes/api.php'));
     }
 }

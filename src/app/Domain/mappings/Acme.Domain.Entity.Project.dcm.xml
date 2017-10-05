@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+    <entity name="Acme\Domain\Entity\Project" table="projects">
+        <lifecycle-callbacks>
+            <lifecycle-callback type="preUpdate" method="onPreUpdate"/>
+            <lifecycle-callback type="prePersist" method="onPrePersist"/>
+        </lifecycle-callbacks>
+
+        <many-to-many field="projectOwners" mapped-by="project_owners" target-entity="Acme\Domain\Entity\ProjectOwner"/>
+
+        <id name="id" column="id" type="uuid">
+            <generator strategy="CUSTOM"/>
+            <custom-id-generator class="Ramsey\Uuid\Doctrine\UuidGenerator"/>
+        </id>
+        <field name="clientId" column="clientId" type="uuid"/>
+        <field name="name" column="name"/>
+        <field name="description" column="description" type="text"/>
+        <field name="createdAt" column="createdAt" type="datetime"/>
+        <field name="updatedAt" column="updatedAt" type="datetime" nullable="true"/>
+    </entity>
+</doctrine-mapping>
