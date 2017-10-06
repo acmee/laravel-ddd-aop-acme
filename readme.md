@@ -25,7 +25,7 @@ We use [an automated nginx reverse proxy for docker containers](https://hub.dock
 
 To build the application, type ```$ make build``` and navigate to ```http://acme.dev```.
 
-To install composer dependencies, type ```$ make composer <COMPOSER ARGS>```. If you need to pass options (like --prefer-source) to the command you have to prefix your call with `--`:
+To install composer dependencies, type ```$ make composer <COMPOSER ARGS>```. If you need to pass options (like --prefer-source) to the command, you have to prefix your call with `--`:
 ``$ make -- composer <COMPOSER ARGS> --prefer-source``
 
 To stop the application, type ```$ make stop```.
@@ -44,5 +44,5 @@ To tail nginx container logs, type ```$ make app-logs```.
 
 To log into the mysql container, type ```$ make app-mysql```.
 
-To run Laravel artisan, type ```$make artisan <ARTISAN ARGS>```. If you need to pass options (like -h) to the command you have to prefix your call with `--`:
+To run Laravel artisan, type ```$make artisan <ARTISAN ARGS>```. If you need to pass options (like -h) to the command, you have to prefix your call with `--`:
 ``$ make -- artisan <ARTISAN ARGS> -h``
