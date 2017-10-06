@@ -1,8 +1,8 @@
 env?="dev"
 
 ifeq (composer,$(firstword $(MAKECMDGOALS)))
-COMPOSER_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-$(eval $(COMPOSER_ARGS):;@:)
+    COMPOSER_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+    $(eval $(COMPOSER_ARGS):;@:)
 endif
 
 ifeq (artisan,$(firstword $(MAKECMDGOALS)))
