@@ -9,7 +9,7 @@
             <lifecycle-callback type="prePersist" method="onPrePersist"/>
         </lifecycle-callbacks>
 
-        <many-to-many field="projectOwners" mapped-by="project_owners" target-entity="Acme\Domain\Entity\ProjectOwner"/>
+        <many-to-many field="projectOwners" mapped-by="projects" target-entity="Acme\Domain\Entity\ProjectOwner"/>
 
         <id name="id" column="id" type="uuid">
             <generator strategy="CUSTOM"/>
