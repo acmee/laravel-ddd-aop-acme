@@ -2,7 +2,15 @@ language: php
 php:
   - '7.1'
 
+env:
+  global:
+    - APP_ENV=testing
+    - DB_CONNECTION=sqlite
+
+sudo: false
+
 before_script:
+  - echo "extension = apc.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer install --prefer-source --no-interaction
