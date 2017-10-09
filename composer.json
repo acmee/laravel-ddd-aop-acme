@@ -41,7 +41,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "./src/tests/"
+            "Acme\\Tests\\": "./src/tests/"
         }
     },
     "scripts": {
