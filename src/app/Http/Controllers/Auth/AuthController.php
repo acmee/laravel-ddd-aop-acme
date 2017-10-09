@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Validator;
  */
 class AuthController extends Controller
 {
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    //use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
      * Where to redirect users after login / registration.
