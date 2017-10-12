@@ -3,9 +3,10 @@
 namespace Acme\Tests\unit\Infrastructure\Repository;
 
 use Acme\Domain\Contract\ClientRepository;
-use Acme\Tests\DatabaseTestCase;
 use Acme\Tests\TestCase;
 use Doctrine\Common\Collections\ArrayCollection;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use LaravelDoctrine\Migrations\Testing\DatabaseMigrations;
 
 /**
  * Class ClientRepositoryTest
@@ -16,18 +17,17 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class ClientRepositoryTest extends TestCase
 {
+    use DatabaseMigrations,
+        DatabaseTransactions;
+
     /**
      * @var ClientRepository
      */
     private $sut;
 
-    use DatabaseTestCase {
-        setUp as protected traitSetUp;
-    }
-
     public function setUp()
     {
-        $this->traitSetUp();
+        parent::setUp();
 
         $this->sut = $this->app->make(ClientRepository::class);
     }
