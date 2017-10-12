@@ -151,8 +151,9 @@ return [
         /*
          * Application Service Providers...
          */
-        Xinax\LaravelGettext\LaravelGettextServiceProvider::class,
         LaravelDoctrine\Migrations\MigrationsServiceProvider::class,
+        GrahamCampbell\Security\SecurityServiceProvider::class,
+        GrahamCampbell\Binput\BinputServiceProvider::class,
 
         Acme\Providers\AppServiceProvider::class,
         Acme\Providers\AopServiceProvider::class,
@@ -205,6 +206,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // application aliases
+        'Binput' => GrahamCampbell\Binput\Facades\Binput::class,
+        'Security' => GrahamCampbell\Security\Facades\Security::class,
     ],
 
 ];
