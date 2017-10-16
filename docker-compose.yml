@@ -39,6 +39,9 @@ services:
         container_name: acme_php
         environment:
           - XDEBUG_HOST=${XDEBUG_HOST}
+          - APP_ENV=local
+          - APP_DEBUG=true
+          - APP_LOG_LEVEL=debug
         expose:
             - 9000
         volumes:
