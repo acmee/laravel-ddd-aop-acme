@@ -10,11 +10,10 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Feature Tests">
-            <directory suffix="Test.php">./tests/Feature</directory>
+            <directory suffix="Test.php">./tests/feature</directory>
         </testsuite>
-
         <testsuite name="Unit Tests">
-            <directory suffix="Test.php">./tests/Unit</directory>
+            <directory suffix="Test.php">./tests/unit</directory>
         </testsuite>
     </testsuites>
     <filter>

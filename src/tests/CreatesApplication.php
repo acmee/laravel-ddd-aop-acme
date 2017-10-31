@@ -1,5 +1,5 @@
 <?php
-namespace Tests;
+namespace Acme\Tests;
 
 use Illuminate\Contracts\Console\Kernel;
 

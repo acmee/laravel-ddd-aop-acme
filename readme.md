@@ -21,28 +21,14 @@ We use [an automated nginx reverse proxy for docker containers](https://hub.dock
         # may be restart your computer for the local dns resolver to be recognized
         ```
 
-### How to install and run
+### Install and run
 
-To build the application, type ```$ make build``` and navigate to ```http://acme.dev```.
+Run `$ make help` to list available commands.
 
-To install composer dependencies, type ```$ make composer <COMPOSER ARGS>```. If you need to pass options (like --prefer-source) to the command you have to prefix your call with `--`:
-``$ make -- composer <COMPOSER ARGS> --prefer-source``
+Run `$ make build` to create containers and install composer dependencies.
 
-To stop the application, type ```$ make stop```.
+Run `$ make migrate` to run database migrations.
 
-To start the application, type ```$ make start``` and navigate to ```http://acme.dev```.
+Run `$ make stop` to stop all containers.
 
-To rebuild the application, type ```$ make rebuild```.
-
-To remove the application and containers, type ```$ make remove```.
-
-To run the php-unit tests, type ```$ make tests```.
-
-To log into the nginx container, type ```$ make app-ssh```.
-
-To tail nginx container logs, type ```$ make app-logs```.
-
-To log into the mysql container, type ```$ make app-mysql```.
-
-To run Laravel artisan, type ```$make artisan <ARTISAN ARGS>```. If you need to pass options (like -h) to the command you have to prefix your call with `--`:
-``$ make -- artisan <ARTISAN ARGS> -h``
+Run `$ make start` to start all containers.

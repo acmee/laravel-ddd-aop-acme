@@ -9,7 +9,7 @@
             <lifecycle-callback type="prePersist" method="onPrePersist"/>
         </lifecycle-callbacks>
 
-        <many-to-many field="projects" inversed-by="project_owners" target-entity="Acme\Domain\Entity\Project">
+        <many-to-many field="projects" inversed-by="projectOwners" target-entity="Acme\Domain\Entity\Project">
             <join-table name="projects_has_project_owners">
                 <join-columns>
                     <join-column name="project_id" referenced-column-name="id" />

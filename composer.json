@@ -4,16 +4,11 @@
     "require": {
         "php": "~7.1",
         "beberlei/DoctrineExtensions": "^1.0",
-        "belphemur/laravel-gettext": "^5.0",
-        "caffeinated/menus": "^3.0",
-        "cocur/slugify": "^2",
-        "dingo/api": "1.0.*@dev",
         "gedmo/doctrine-extensions": "^2.4",
         "goaop/framework": "^2.1",
         "goaop/goaop-laravel-bridge": "^1.0",
         "graham-campbell/binput": "^3.6",
         "graham-campbell/throttle": "^5.3",
-        "jenssegers/mongodb": "~3.2",
         "laravel-doctrine/extensions": "1.0.*",
         "laravel-doctrine/migrations": "1.1.*",
         "laravel/framework": "^5.4",
@@ -41,7 +36,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "./src/tests/"
+            "Acme\\Tests\\": "./src/tests/"
         }
     },
     "scripts": {

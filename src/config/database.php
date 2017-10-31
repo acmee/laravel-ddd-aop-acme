@@ -60,6 +60,13 @@ return [
             'engine' => 'InnoDB',
         ],
 
+        // hm. travis do not see configuration under config/testing
+        'sqlite_testing' => [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => ''
+        ],
+
     ],
 
     /*
