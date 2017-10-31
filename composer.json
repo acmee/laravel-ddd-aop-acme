@@ -4,7 +4,6 @@
     "require": {
         "php": "~7.1",
         "beberlei/DoctrineExtensions": "^1.0",
-        "dingo/api": "1.0.*@dev",
         "gedmo/doctrine-extensions": "^2.4",
         "goaop/framework": "^2.1",
         "goaop/goaop-laravel-bridge": "^1.0",

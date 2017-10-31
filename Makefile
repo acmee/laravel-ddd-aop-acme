@@ -1,5 +1,6 @@
 env?="local"
 XDEBUG_HOST=$(shell ipconfig getifaddr en0)
+XDEBUG_IDEKEY="PHPSTORM"
 ARGS=""
 
 ifeq (composer,$(firstword $(MAKECMDGOALS)))
@@ -44,7 +45,7 @@ help:
 	@echo "  migrate                               run database migrations"
 
 build:
-	XDEBUG_HOST=${XDEBUG_HOST} docker-compose up -d
+	XDEBUG_HOST=${XDEBUG_HOST} XDEBUG_IDEKEY=${XDEBUG_IDEKEY} docker-compose up -d
 	make -- composer install --ignore-platform-reqs --no-interaction --prefer-source
 
 rebuild:
@@ -56,7 +57,7 @@ delete:
 	docker ps -a --filter="name=acme" --format="{{.ID}}" | xargs docker rm -v
 
 start:
-	XDEBUG_HOST=${XDEBUG_HOST} docker-compose up -d --no-build
+	XDEBUG_HOST=${XDEBUG_HOST} XDEBUG_IDEKEY=${XDEBUG_IDEKEY} docker-compose up -d --no-build
 
 stop:
 	docker ps -a -q  --filter="name=acme" | xargs docker stop

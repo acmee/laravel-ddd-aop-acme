@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 volumes:
     database_data:
@@ -23,7 +23,6 @@ services:
             - ./src:/var/www/acme/src
         depends_on:
             - php
-            - mysql
         environment:
             - VIRTUAL_HOST=acme.dev
 
@@ -33,12 +32,12 @@ services:
             args:
                 APCU_VERSION: 5.1.8
                 APCU_BC_VERSION: 1.0.3
-                XDEBUG: 1
                 XDEBUG_HOST: ${XDEBUG_HOST}
         image: acme:php
         container_name: acme_php
         environment:
           - XDEBUG_HOST=${XDEBUG_HOST}
+          - XDEBUG_IDEKEY=${XDEBUG_IDEKEY}
           - APP_ENV=local
           - APP_DEBUG=true
           - APP_LOG_LEVEL=debug
@@ -50,8 +49,6 @@ services:
     testing:
         build:
             context: ./docker/php/
-            args:
-                XDEBUG: 0
         image: acme:testing
         container_name: acme_testing
         volumes:
